@@ -70,7 +70,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden bg-[#06070B] cyber-grid [perspective:1200px]"
+      className="relative min-h-[100dvh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-[#06070B] cyber-grid [perspective:1200px]"
     >
       {/* Dynamic ambient cyber glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-primary/10 rounded-full blur-[160px] pointer-events-none" />

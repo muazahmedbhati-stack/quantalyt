@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
@@ -20,9 +20,12 @@ export default function CustomCursor() {
   const isHovering = useRef(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) return;
+    const checkMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    setIsMobile(checkMobile);
+    if (checkMobile) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 8);
@@ -54,6 +57,8 @@ export default function CustomCursor() {
       document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [cursorX, cursorY, trailX, trailY]);
+
+  if (isMobile) return null;
 
   return (
     <>
